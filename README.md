@@ -27,7 +27,7 @@ cd mailer
 # Configure
 
 ```
-editor Mail.txt
+editor Mail.txt #Email text, default will send the README.md
 editor mail.properties
 ```
 
