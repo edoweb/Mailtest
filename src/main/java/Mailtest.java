@@ -33,8 +33,9 @@ public class Mailtest {
 	public static void send() {
 		try {
 			Properties properties = new Properties();
-			properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("mail.properties"));
-			Session session = Session.getDefaultInstance(properties);
+    		properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("mail.properties"));
+			properties.forEach((k,v)->{System.out.println(k+" : "+v);});
+    					Session session = Session.getDefaultInstance(properties);
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(properties.getProperty("sender")));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(properties.getProperty("recipient")));
