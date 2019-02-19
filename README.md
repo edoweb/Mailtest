@@ -20,7 +20,7 @@ mvn clean install
 mkdir mailer
 cp README.md mailer
 cp target/Mailtest-0.0.1-SNAPSHOT-jar-with-dependencies.jar mailer
-cp src/main/resources/mail.properties mailer
+cp mail.properties mailer
 cd mailer
 ```
 

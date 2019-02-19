@@ -1,3 +1,4 @@
+
 /*******************************************************************************
  * Copyright 2019 Jan Schnasse
  * 
@@ -13,6 +14,8 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
+import java.io.File;
+import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Date;
@@ -33,9 +36,11 @@ public class Mailtest {
 	public static void send() {
 		try {
 			Properties properties = new Properties();
-    		properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("mail.properties"));
-			properties.forEach((k,v)->{System.out.println(k+" : "+v);});
-    					Session session = Session.getDefaultInstance(properties);
+			properties.load(new FileReader(new File(".").getCanonicalPath() + File.separator + "mail.properties"));
+			properties.forEach((k, v) -> {
+				System.out.println(k + " : " + v);
+			});
+			Session session = Session.getDefaultInstance(properties);
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(properties.getProperty("sender")));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(properties.getProperty("recipient")));
